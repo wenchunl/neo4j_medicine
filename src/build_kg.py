@@ -6,6 +6,13 @@ class KnowledgeGraphBuilder:
     def __init__(self):
         pass
 
+    # CATION: this will clear all nodes and relationships
+    def clear_graph(self):
+        query = """
+        MATCH (n) DETACH DELETE n
+        """
+        db.query(query)
+
     def load_medicine_data(self, filepath):
         medicines = []
         with open(filepath, "r", encoding="utf-8") as f:
@@ -36,6 +43,7 @@ class KnowledgeGraphBuilder:
 
     def build(self, filepath):
         medicines = self.load_medicine_data(filepath)
+        self.clear_graph()
         self.create_medicine_nodes(medicines)
         self.create_relationships(medicines)
         print("csv data loaded, and created node&relationships")
