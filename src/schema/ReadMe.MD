@@ -27,3 +27,5 @@ and set the schema manually, see the below code:
 ```
 
 -- solution 3: Includes statistics and examples. Suitable when detailed schema information needed.
+
+-- solution 4: using cached schema. see \schema\s4.py
